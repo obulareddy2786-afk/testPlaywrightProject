@@ -1,0 +1,45 @@
+pipeline {
+  agent any
+
+  options {
+    timestamps()
+    timeout(time: 30, unit: 'MINUTES')
+  }
+
+  environment {
+    CI = 'true'
+  }
+
+  stages {
+    stage('Install dependencies') {
+      steps {
+        sh 'node --version'
+        sh 'npm --version'
+        sh 'npm ci'
+        sh 'npx playwright install --with-deps chromium'
+      }
+    }
+
+    stage('Run Playwright tests') {
+      steps {
+        withCredentials([
+          string(credentialsId: 'paari-admin-username', variable: 'ADMIN_USERNAME'),
+          string(credentialsId: 'paari-admin-password', variable: 'ADMIN_PASSWORD'),
+          string(credentialsId: 'paari-owner-username', variable: 'OWNER_USERNAME'),
+          string(credentialsId: 'paari-owner-password', variable: 'OWNER_PASSWORD'),
+          string(credentialsId: 'paari-test-email', variable: 'TEST_EMAIL'),
+          string(credentialsId: 'paari-test-password', variable: 'TEST_PASSWORD')
+        ]) {
+          sh 'npm test'
+        }
+      }
+    }
+  }
+
+  post {
+    always {
+      junit allowEmptyResults: true, testResults: 'test-results/junit.xml'
+      archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-report/**,test-results/**'
+    }
+  }
+}

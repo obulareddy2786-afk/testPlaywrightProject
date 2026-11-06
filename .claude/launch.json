@@ -1,0 +1,9 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "test-report",
+      "url": "http://localhost:52778"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+node_modules/
+test-results/
+playwright-report/
+.env
+.DS_Store
+.idea/
+*.log
+screenshots/
+.playwright/
+dist/
+build/
+coverage/
+
+# Playwright
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+
+# Local artifacts
+project.tar.gz
+test-output.txt
+test-errors.txt
+test-results.txt
+Claude outputs/
+.claude/settings.local.json

@@ -1,0 +1,41 @@
+{
+  "name": "paari-login-test-suite",
+  "version": "1.0.0",
+  "description": "Comprehensive login test suite for Paari application with multiple user roles",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:admin": "playwright test -g 'ADMIN'",
+    "test:owner": "playwright test -g 'OWNER'",
+    "test:user": "playwright test -g 'USER'",
+    "test:negative": "playwright test -g 'NEGATIVE'",
+    "test:positive": "playwright test -g 'POSITIVE'",
+    "test:security": "playwright test -g 'SECURITY'",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:all-browsers": "playwright test --project=chromium --project=firefox --project=webkit",
+    "test:parallel": "playwright test --workers=4",
+    "test:serial": "playwright test --workers=1",
+    "codegen": "playwright codegen https://paari.pythonanywhere.com/login/",
+    "show-report": "playwright show-report"
+  },
+  "keywords": [
+    "playwright",
+    "login",
+    "e2e",
+    "testing",
+    "multi-user",
+    "authentication"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^26.6.3",
+    "dotenv": "^16.4.5"
+  }
+}
