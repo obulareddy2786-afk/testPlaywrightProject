@@ -23,7 +23,7 @@ test.describe('End-to-End User Flow Tests', () => {
     await loginPage.login(validEmail, validPassword);
 
     // Step 2: Verify dashboard loaded
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     const dashboardPage = new DashboardPage(page);
     const isDashboardLoaded = await dashboardPage.isDashboardLoaded();
     expect(isDashboardLoaded).toBeTruthy();
@@ -73,7 +73,7 @@ test.describe('End-to-End User Flow Tests', () => {
     await loginPage.login(validEmail, validPassword);
 
     // Step 2: Navigate to products
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     const productsPage = new ProductsPage(page);
     await productsPage.goto();
     await productsPage.waitForProductsLoaded();
@@ -104,7 +104,7 @@ test.describe('End-to-End User Flow Tests', () => {
     await loginPage.login(validEmail, validPassword);
 
     // Step 2: Get products
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     const productsPage = new ProductsPage(page);
     await productsPage.goto();
     await productsPage.waitForProductsLoaded();
@@ -127,7 +127,7 @@ test.describe('End-to-End User Flow Tests', () => {
 
     // Step 4: Place second order
     await page.goto(`${process.env.BASE_URL || 'https://rahulshettyacademy.com/client'}/#/dashboard`);
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await productsPage.goto();
     await productsPage.waitForProductsLoaded();
     await productsPage.addProductToCart(productNames[1]);
@@ -160,7 +160,7 @@ test.describe('End-to-End User Flow Tests', () => {
     await loginPage.login(validEmail, validPassword);
 
     // Step 2: Add products
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     const productsPage = new ProductsPage(page);
     await productsPage.goto();
     await productsPage.waitForProductsLoaded();
@@ -189,7 +189,7 @@ test.describe('End-to-End User Flow Tests', () => {
     await loginPage.goto();
     await loginPage.login(validEmail, validPassword);
 
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     const productsPage = new ProductsPage(page);
     await productsPage.goto();
     await productsPage.waitForProductsLoaded();
@@ -223,7 +223,7 @@ test.describe('End-to-End User Flow Tests', () => {
     await loginPage.login(validEmail, validPassword);
 
     // Step 2: Verify logged in
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     const dashboardPage = new DashboardPage(page);
     const isDashboardLoaded = await dashboardPage.isDashboardLoaded();
     expect(isDashboardLoaded).toBeTruthy();
@@ -232,7 +232,7 @@ test.describe('End-to-End User Flow Tests', () => {
     await dashboardPage.logout();
 
     // Step 4: Verify on login page
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     const newLoginPage = new LoginPage(page);
     const isLoginVisible = await newLoginPage.isLoginPageVisible();
     expect(isLoginVisible).toBeTruthy();
@@ -247,7 +247,7 @@ test.describe('End-to-End User Flow Tests', () => {
     await loginPage.login(validEmail, validPassword);
 
     // Step 2: Add first product
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     const productsPage = new ProductsPage(page);
     await productsPage.goto();
     await productsPage.waitForProductsLoaded();
@@ -279,7 +279,7 @@ test.describe('End-to-End User Flow Tests', () => {
     await loginPage.login(validEmail, validPassword);
 
     // Step 2: Navigate to products
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     const productsPage = new ProductsPage(page);
     await productsPage.goto();
     await productsPage.waitForProductsLoaded();
@@ -301,7 +301,7 @@ test.describe('End-to-End User Flow Tests', () => {
     await loginPage.goto();
     await loginPage.login(validEmail, validPassword);
 
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     const productsPage = new ProductsPage(page);
     await productsPage.goto();
     await productsPage.waitForProductsLoaded();
@@ -335,7 +335,7 @@ test.describe('End-to-End User Flow Tests', () => {
     const loginPage = new LoginPage(page);
     await loginPage.goto();
     await loginPage.login(validEmail, validPassword);
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
 
     // Step 2: Browse and purchase
     const productsPage = new ProductsPage(page);
@@ -360,7 +360,7 @@ test.describe('End-to-End User Flow Tests', () => {
     // Step 4: Logout
     const dashboardPage = new DashboardPage(page);
     await dashboardPage.logout();
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
 
     // Step 5: Verify logged out
     const verifyLoginPage = new LoginPage(page);

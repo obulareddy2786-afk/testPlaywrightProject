@@ -74,7 +74,7 @@ test.describe('Dashboard Page Tests', () => {
 
     // Act
     await dashboardPage.logout();
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
 
     // Assert
     expect(page.url()).toContain('login');

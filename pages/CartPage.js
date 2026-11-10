@@ -14,13 +14,13 @@ export class CartPage extends BasePage {
 
   constructor(page) {
     super(page);
-    this.pageURL = '/#/cart';
+    this.pageURL = '#/cart';
   }
 
   async goto() {
     await super.goto(this.pageURL);
     this.logger.info('Navigated to Cart Page');
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   async isCartEmpty() {
@@ -91,13 +91,13 @@ export class CartPage extends BasePage {
   async clickCheckout() {
     this.logger.step(1, 'Clicking Checkout button');
     await this.click(this.checkoutButton);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   async continueShopping() {
     this.logger.info('Continuing shopping');
     await this.click(this.continueShoppingButton);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   async updateItemQuantity(productName, quantity) {

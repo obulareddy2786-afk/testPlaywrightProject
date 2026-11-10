@@ -126,7 +126,7 @@ test.describe('Products Page Tests', () => {
     await productsPage.navigateToCart();
 
     // Assert
-    await authenticatedPage.waitForLoadState('networkidle');
+    await authenticatedPage.waitForLoadState('load');
     expect(authenticatedPage.url()).toContain('cart');
   });
 

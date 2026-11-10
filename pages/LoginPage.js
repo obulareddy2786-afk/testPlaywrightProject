@@ -10,13 +10,13 @@ export class LoginPage extends BasePage {
 
   constructor(page) {
     super(page);
-    this.pageURL = '/#/auth/login';
+    this.pageURL = '#/auth/login';
   }
 
   async goto() {
     await super.goto(this.pageURL);
     this.logger.info('Navigated to Login Page');
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
     await this.page.waitForTimeout(1000);
   }
 
@@ -33,7 +33,7 @@ export class LoginPage extends BasePage {
   async clickLoginButton() {
     this.logger.step(3, `Clicking login button`);
     await this.click(this.loginButton);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
     await this.page.waitForTimeout(2000);
   }
 
