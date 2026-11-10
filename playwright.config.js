@@ -13,12 +13,12 @@ export default defineConfig({
     ['list']
   ],
   use: {
-    baseURL: process.env.BASE_URL || 'https://rahulshettyacademy.com/client/#/auth/login',
+    baseURL: process.env.BASE_URL || 'https://rahulshettyacademy.com/client',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    // Headed locally for debugging; headless on CI (GitHub runners have no display).
-    headless: !process.env.CI
+    // Headed locally for debugging. Headless on CI, and on Linux machines with no display.
+    headless: !!process.env.CI || (process.platform === 'linux' && !process.env.DISPLAY)
   },
 
   projects: [

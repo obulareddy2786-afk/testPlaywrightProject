@@ -14,7 +14,7 @@ test.describe('Authentication Tests', () => {
     await loginPage.login(validEmail, validPassword);
 
     // Assert
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     const dashboardPage = new DashboardPage(page);
     const isDashboardLoaded = await dashboardPage.isDashboardLoaded();
     expect(isDashboardLoaded).toBeTruthy();

@@ -14,13 +14,13 @@ export class ProductsPage extends BasePage {
 
   constructor(page) {
     super(page);
-    this.pageURL = '/#/dashboard';
+    this.pageURL = '#/dashboard';
   }
 
   async goto() {
     await super.goto(this.pageURL);
     this.logger.info('Navigated to Products Page');
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   async waitForProductsLoaded() {
@@ -89,19 +89,19 @@ export class ProductsPage extends BasePage {
   async searchForProduct(searchTerm) {
     this.logger.info(`Searching for products with term: "${searchTerm}"`);
     await this.fillInput(this.searchBox, searchTerm);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   async filterProducts(filterOption) {
     this.logger.info(`Filtering products with option: ${filterOption}`);
     await this.page.selectOption(this.productFilter, filterOption);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   async navigateToCart() {
     this.logger.info('Navigating to Cart');
     await this.click(this.cartButton);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   async isProductVisible(productName) {

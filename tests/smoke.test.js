@@ -11,7 +11,7 @@ test.describe('Smoke Tests - Core Functionality', () => {
   test('SMOKE_001: User can login with valid credentials', async ({ page }) => {
     // Navigate to login page
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
 
     // Fill login form
     await page.fill('#userEmail', VALID_EMAIL);
@@ -19,7 +19,7 @@ test.describe('Smoke Tests - Core Functionality', () => {
 
     // Click login
     await page.click('#login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(2000);
 
     // Verify dashboard is loaded (check for home icon)
@@ -32,11 +32,11 @@ test.describe('Smoke Tests - Core Functionality', () => {
   test('SMOKE_002: Products are displayed on dashboard', async ({ page }) => {
     // Login
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.fill('#userEmail', VALID_EMAIL);
     await page.fill('#userPassword', VALID_PASSWORD);
     await page.click('#login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(2000);
 
     // Check if products are displayed
@@ -49,11 +49,11 @@ test.describe('Smoke Tests - Core Functionality', () => {
   test('SMOKE_003: Can add product to cart', async ({ page }) => {
     // Login
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.fill('#userEmail', VALID_EMAIL);
     await page.fill('#userPassword', VALID_PASSWORD);
     await page.click('#login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(2000);
 
     // Get first product name
@@ -73,11 +73,11 @@ test.describe('Smoke Tests - Core Functionality', () => {
   test('SMOKE_004: Can navigate to cart and view items', async ({ page }) => {
     // Login
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.fill('#userEmail', VALID_EMAIL);
     await page.fill('#userPassword', VALID_PASSWORD);
     await page.click('#login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(2000);
 
     // Add product
@@ -86,7 +86,7 @@ test.describe('Smoke Tests - Core Functionality', () => {
 
     // Navigate to cart
     await page.click('button[routerlink*="cart"]');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(1000);
 
     // Verify cart has items
@@ -99,16 +99,16 @@ test.describe('Smoke Tests - Core Functionality', () => {
   test('SMOKE_005: Can logout from dashboard', async ({ page }) => {
     // Login
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.fill('#userEmail', VALID_EMAIL);
     await page.fill('#userPassword', VALID_PASSWORD);
     await page.click('#login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(2000);
 
     // Click logout
     await page.click('.fa.fa-sign-out');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(1000);
 
     // Verify on login page
@@ -121,7 +121,7 @@ test.describe('Smoke Tests - Core Functionality', () => {
   test('SMOKE_006: Error message on invalid login', async ({ page }) => {
     // Navigate to login
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
 
     // Enter invalid credentials
     await page.fill('#userEmail', 'invalid@test.com');
@@ -141,11 +141,11 @@ test.describe('Smoke Tests - Core Functionality', () => {
   test('SMOKE_007: Complete purchase flow', async ({ page }) => {
     // Login
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.fill('#userEmail', VALID_EMAIL);
     await page.fill('#userPassword', VALID_PASSWORD);
     await page.click('#login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(2000);
 
     // Add product
@@ -158,7 +158,7 @@ test.describe('Smoke Tests - Core Functionality', () => {
 
     // Go to cart
     await page.click('button[routerlink*="cart"]');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(1000);
 
     // Verify product in cart
@@ -171,11 +171,11 @@ test.describe('Smoke Tests - Core Functionality', () => {
   test('SMOKE_008: Verify product count matches display', async ({ page }) => {
     // Login
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.fill('#userEmail', VALID_EMAIL);
     await page.fill('#userPassword', VALID_PASSWORD);
     await page.click('#login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(2000);
 
     // Count products
@@ -194,11 +194,11 @@ test.describe('Smoke Tests - Core Functionality', () => {
   test('SMOKE_009: Can remove item from cart', async ({ page }) => {
     // Login
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.fill('#userEmail', VALID_EMAIL);
     await page.fill('#userPassword', VALID_PASSWORD);
     await page.click('#login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(2000);
 
     // Add product
@@ -207,7 +207,7 @@ test.describe('Smoke Tests - Core Functionality', () => {
 
     // Go to cart
     await page.click('button[routerlink*="cart"]');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(1000);
 
     // Get item count before
@@ -228,16 +228,16 @@ test.describe('Smoke Tests - Core Functionality', () => {
   test('SMOKE_010: Dashboard navigation works', async ({ page }) => {
     // Login
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.fill('#userEmail', VALID_EMAIL);
     await page.fill('#userPassword', VALID_PASSWORD);
     await page.click('#login');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(2000);
 
     // Navigate to orders
     await page.click('button[routerlink*="myorders"]');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
     await page.waitForTimeout(1000);
 
     // Check if on orders page (URL contains myorders)

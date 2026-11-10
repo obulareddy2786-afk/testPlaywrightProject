@@ -12,13 +12,13 @@ export class OrdersPage extends BasePage {
 
   constructor(page) {
     super(page);
-    this.pageURL = '/#/myorders';
+    this.pageURL = '#/myorders';
   }
 
   async goto() {
     await super.goto(this.pageURL);
     this.logger.info('Navigated to Orders Page');
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   async isOrdersPageLoaded() {
@@ -51,7 +51,7 @@ export class OrdersPage extends BasePage {
       const id = await row.locator('th').textContent();
       if (id.includes(orderId)) {
         await row.locator(this.orderDetails).click();
-        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForLoadState('load');
         this.logger.info(`Viewing order ${orderId} details`);
         return true;
       }
@@ -89,7 +89,7 @@ export class OrdersPage extends BasePage {
   async goBack() {
     this.logger.info('Going back');
     await this.click(this.backButton);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   async verifyOrderTableExists() {

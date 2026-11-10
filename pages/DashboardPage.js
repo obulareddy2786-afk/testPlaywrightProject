@@ -12,13 +12,13 @@ export class DashboardPage extends BasePage {
 
   constructor(page) {
     super(page);
-    this.pageURL = '/#/dashboard';
+    this.pageURL = '#/dashboard';
   }
 
   async goto() {
     await super.goto(this.pageURL);
     this.logger.info('Navigated to Dashboard Page');
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   async isDashboardLoaded() {
@@ -33,21 +33,21 @@ export class DashboardPage extends BasePage {
   async navigateToProducts() {
     this.logger.info('Navigating to Products');
     await this.click(this.productsLink);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
     await this.page.waitForTimeout(1000);
   }
 
   async navigateToCart() {
     this.logger.info('Navigating to Cart');
     await this.click(this.cartLink);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
     await this.page.waitForTimeout(1000);
   }
 
   async navigateToOrders() {
     this.logger.info('Navigating to Orders');
     await this.click(this.ordersLink);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
     await this.page.waitForTimeout(1000);
   }
 
@@ -55,7 +55,7 @@ export class DashboardPage extends BasePage {
     this.logger.info('Logging out');
     try {
       await this.click(this.logoutButton);
-      await this.page.waitForLoadState('networkidle');
+      await this.page.waitForLoadState('load');
       await this.page.waitForTimeout(1000);
     } catch (error) {
       this.logger.error(`Logout failed: ${error.message}`);

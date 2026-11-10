@@ -17,13 +17,13 @@ export class CheckoutPage extends BasePage {
 
   constructor(page) {
     super(page);
-    this.pageURL = '/#/checkout';
+    this.pageURL = '#/checkout';
   }
 
   async goto() {
     await super.goto(this.pageURL);
     this.logger.info('Navigated to Checkout Page');
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   async isCheckoutPageLoaded() {
@@ -79,7 +79,7 @@ export class CheckoutPage extends BasePage {
   async placeOrder() {
     this.logger.step(5, 'Placing order');
     await this.click(this.placeOrderButton);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
     await this.page.waitForTimeout(2000);
     this.logger.info('Order placed successfully');
   }
@@ -122,7 +122,7 @@ export class CheckoutPage extends BasePage {
   async navigateToDashboard() {
     this.logger.info('Navigating to dashboard');
     await this.click(this.homeButton);
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState('load');
   }
 
   async verifyOrderSummary() {
